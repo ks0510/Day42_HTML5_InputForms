@@ -18,6 +18,7 @@
         <div>
             <label for="pwd">Password input type:</label>
             <input type="password" id="pwd" name="pwd">
+            <error-output class="pwd-error" for="pwd"></error-output>
         </div>
         <div>
             <label for="email">email input type:</label>
@@ -55,6 +56,24 @@
         </div>
     </form>
     <script>
+        const pwd = document.querySelector('#pwd');
+        const pwdError = document.querySelector('.pwd-error'); 
+        pwd.addEventListener('input', function() {
+        let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$'); 
+        if (nameRegex.test(pwd.value))
+          pwdError.textContent = "";
+        else pwdError.textContent = "Password is Incorrect";
+        });
+
+        const text = document.querySelector('#text');
+        const textError = document.querySelector('.text-error'); 
+        text.addEventListener('input', function() {
+        let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$'); 
+        if (nameRegex.test(text.value))
+          textError.textContent = "";
+        else textError.textContent = "Name is Incorrect";
+        });
+
         const salary = document.querySelector('#salary');
         const output = document.querySelector('.salary-output');
         output.textContent = salary.value;
